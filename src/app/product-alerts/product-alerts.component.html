@@ -1,3 +1,12 @@
-<p *ngIf="product && product.price > 700">
-<button type="button" (click)="notify.emit()">Notify Me</button>
-</p>
+
+  <p *ngIf="product && product.price > 700; else supersecretcalculation">
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+  </p>
+
+
+  <ng-template #supersecretcalculation>
+    <p>
+  <button type="button" (click)="calculationNotify.emit()">{{count}}</button>
+    </p>
+  <ng-template>
+
