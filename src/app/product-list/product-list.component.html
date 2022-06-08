@@ -21,7 +21,7 @@
   </ng-template>
 
   <div *ngIf="product.price; else noprice">
-    <p>Price: ${{ product.price }}</p>
+    <p>Price: {{ product.price | currency}} </p>
   </div>
 
   <ng-template #noprice> 
