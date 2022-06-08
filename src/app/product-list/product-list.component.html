@@ -1,6 +1,9 @@
 <h2>Products</h2>
 
 <div *ngFor="let product of products">
+  
+  <hr style = "background-color: darkblue; height:3px">
+
   <h3>
     <a [title]="product.name + ' details'">
       {{ product.name }}
@@ -17,12 +20,27 @@
       </div>
   </ng-template>
 
+  <div *ngIf="product.price; else noprice">
+    <p>Price: ${{ product.price }}</p>
+  </div>
+
+  <ng-template #noprice> 
+      <div>
+        <p>No Price available</p>
+      </div>
+  </ng-template>
+
   <button type="button" (click)="share()">
     Share
   </button>
 
-</div>
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
 
+</div>
+<hr style = "background-color: darkblue; height:3px">
 <!-- 
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
